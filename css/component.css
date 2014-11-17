@@ -1,0 +1,271 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
+
+a, a:hover, a:focus, button {
+  outline: none;
+  text-decoration: none;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+*,
+*:after,
+*::before {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,
+body,
+.st-container,
+.st-pusher,
+.st-content,
+.st-content-inner{
+	height: 100%;
+}
+
+.st-content {
+	overflow-y: auto;
+	background: #000;
+}
+
+.st-content,
+.st-content-inner {
+	position: relative;
+}
+
+.st-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.st-pusher {
+	position: relative;
+	left: 0;
+	z-index: 99;
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.st-pusher::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.st-menu-open .st-pusher::after {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.st-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	visibility: hidden;
+	width: 300px;
+	height: 100%;
+	background: #222;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.st-menu::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.st-menu-open .st-menu::after {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+/* content style */
+
+.st-menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.st-menu h2 {
+	margin: 0;
+	padding: 1em;
+	color: rgba(0,0,0,0.4);
+	text-shadow: 0 0 1px rgba(0,0,0,0.1);
+	font-weight: 300;
+	font-size: 2em;
+}
+
+.st-menu ul li a {
+	display: block;
+	padding: 1em 1em 1em 1.2em;
+	outline: none;
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+	color: #f3efe0;
+	text-transform: uppercase;
+	text-shadow: 0 0 1px rgba(255,255,255,0.1);
+	letter-spacing: 1px;
+	font-weight: 400;
+	-webkit-transition: background 0.3s, box-shadow 0.3s;
+	transition: background 0.3s, box-shadow 0.3s;
+}
+
+.st-menu ul li:first-child a {
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+}
+
+.st-menu ul li:hover {
+	background: rgba(0,0,0,0.2);
+	box-shadow: inset 0 -1px rgba(0,0,0,0);
+	color: #fff;
+}
+
+.st-container {
+	-webkit-perspective: 1500px;
+	perspective: 1500px;
+}
+
+ .st-pusher {
+	-webkit-transform-origin: 0% 50%;
+	transform-origin: 0% 50%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-menu-open .st-pusher {
+	-webkit-transform: translate3d(300px, 0, 0) rotateY(-15deg);
+	transform: translate3d(300px, 0, 0) rotateY(-15deg);
+}
+
+.st-menu {
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	-webkit-transform-origin: 100% 50%;
+	transform-origin: 100% 50%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.st-menu-open .st-menu {
+	visibility: visible;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(15deg);
+	transform: translate3d(-100%, 0, 0) rotateY(15deg);
+}
+
+.st-menu::after {
+	display: none;
+}
+
+.wrapper{
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-size: 400%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #4A89DC;
+  margin: 0;
+  color: #fff;
+  display: table;
+}
+::selection {
+  background: #4584d7;
+}
+::-moz-selection {
+  background: #4584d7;
+}
+.wrapper h1{
+  display: table-cell;
+  vertical-align: middle;
+  outline: 0px solid transparent; 
+}
+.wrapper .menu-icon{
+  position: absolute;
+  display: block;
+  opacity: 1;
+  top: 25px;
+  left: 25px;
+  width: 30px;
+  height: 25px;
+  -webkit-transition:opacity 0.5s;
+  transition:opacity 0.5s;
+}
+.wrapper .menu-icon span{
+  display:block;
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+.st-menu-open .wrapper .menu-icon{
+  opacity: 0;
+}
+
+.st-menu li>span{
+  display:block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Fallback example for browsers that don't support 3D transforms (and no JS fallback) */
+.no-csstransforms3d .st-pusher,
+.no-js .st-pusher {
+	padding-left: 300px;
+}
+
+
+.sp-container{
+  background: none;
+  border: 0;
+}
+.sp-picker-container{
+  border:0;
+}
+.sp-button-container{
+  display: none;
+}
+.sp-input,.sp-input:focus{
+  background: #ffffff; 
+  border:0;
+  border-radius:0px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.sp-color, .sp-hue, .sp-clear{
+  border:0;
+}
