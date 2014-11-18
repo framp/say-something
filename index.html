@@ -6,44 +6,39 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<title>Say something</title>
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel='stylesheet' type="text/css" href='bower_components/spectrum/spectrum.css' />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/modernizr.custom.js"></script>
 	</head>
 	<body>
-		<div id="st-container" class="st-container">
-
-			<div id="st-pusher" class="st-pusher">
-				<nav class="st-menu st-effect-6" id="menu-6">
-					<ul>
-            <li><a href="#">Text Size</a>
-              <span><input type="range" id="edit-text-size" min="0" max="800"></span>
-            </li>
-            <li><a href="#">Text Color</a>
-              <span><input class="color-picker" id="edit-text-color" value="#ffffff"></span>
-            </li>
-						<li><a href="#">Background Color</a> 
-              <span><input class="color-picker" id="edit-background-color" value="#4a89dc"></span>
-            </li>
-					</ul>
-				</nav>
-
-				<div id="st-content" class="st-content"><!-- this is the wrapper for the content -->
-					<div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
-						<div class="wrapper" id="content">
-              <a href="#" class="menu-icon" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-              </a>
-              <h1 id="message" contenteditable="true" >SAY SOMETHING</h1>
-            </div>
-					</div><!-- /st-content-inner -->
-				</div><!-- /st-content -->
-			</div><!-- /st-pusher -->
-		</div><!-- /st-container -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src='bower_components/spectrum/spectrum.js'></script>
-    <script src="js/sidebarEffects.js"></script>
+    <div class="wrapper" id="content">
+      <h1 id="message" contenteditable="true" >SAY SOMETHING</h1>
+    </div>
+    
+    <a href="#" class="corner-icon" id="bigger"></a>
+      
+    <a href="#" class="corner-icon" id="smaller"></a>
+    
+    <div class="color-picker-lig left unselectable" unselectable="on">
+      <canvas width="160" height="160" id="background-color-picker-lig" unselectable="on" class="unselectable"></canvas>
+    </div>
+    <div class="color-picker-sat left unselectable" unselectable="on">
+      <canvas width="130" height="130" id="background-color-picker-sat" unselectable="on" class="unselectable"></canvas>
+    </div>
+    <div class="color-picker-hue left unselectable" unselectable="on">
+      <canvas width="100" height="100" id="background-color-picker-hue" unselectable="on" class="unselectable">.></canvas>
+    </div>
+    <div class="corner-color-picker left unselectable" unselectable="on" id="background-current-color"></div>
+    
+    <div class="color-picker-lig right unselectable" unselectable="on">
+      <canvas width="160" height="160" id="text-color-picker-lig" class="flipH unselectable" unselectable="on"></canvas>
+    </div>
+    <div class="color-picker-sat right unselectable" unselectable="on">
+      <canvas width="130" height="130" id="text-color-picker-sat" class="flipH unselectable" unselectable="on"></canvas>
+    </div>
+    <div class="color-picker-hue right unselectable" unselectable="on">
+      <canvas width="100" height="100" id="text-color-picker-hue" class="flipH unselectable" unselectable="on"></canvas>
+    </div>
+    <div class="corner-color-picker right unselectable" unselectable="on" id="text-current-color"></div>
+    
+    <script src="js/app.js"></script>
 	</body>
 </html>
