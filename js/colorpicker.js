@@ -1,4 +1,6 @@
-function colorpicker(components, sizes, boundElements){
+function colorpicker(components, sizes, cb){
+  
+  var d = document.getElementById.bind(document);
   
   function formats(type){
     return {
@@ -16,7 +18,7 @@ function colorpicker(components, sizes, boundElements){
 
   function arcColor(canvas, range, format){
     if (typeof canvas == 'string')
-      canvas = $(canvas);
+      canvas = d(canvas);
     var ctx = canvas.getContext('2d');
 
     for(var x=0; x<canvas.width; x++){
@@ -39,17 +41,15 @@ function colorpicker(components, sizes, boundElements){
       components[type].sat + '%',
       components[type].lig + '%'
     ];
-    $(type + '-current-color').style.background = 'hsl(' + hsl + ')';
+    d(type + '-current-color').style.background = 'hsl(' + hsl + ')';
     
-    var elements = boundElements[type];
-    for (var i in elements){
-      $(elements[i][0]).style[elements[i][1]] = 'hsl(' + hsl + ')';
-    }
+    if (cb)
+      cb(type, hsl);
   }
 
   function setupEvents(type){
     var id = type + '-color-picker-input';
-    var input = $(id);
+    var input = d(id);
     
     var options = {
       type: type,

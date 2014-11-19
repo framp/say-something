@@ -35,22 +35,21 @@ var $ = document.getElementById.bind(document);
     sat: [100,130],
     lig: [130,160]
   };
-  var boundElements = {
-    background: [
-      ['content', 'background']
-    ],
-    text: [
-      ['message', 'color']
-    ]
+  function cb(type, hsl){
+    if (type==='background')
+      $('content').style['background'] = 'hsl(' + hsl + ')';
+    if (type==='text')
+      $('message').style['color'] = 'hsl(' + hsl + ')';
+    $('url').href = 'like/#' + getUrl();
   };
-  colorpicker(components, sizes, boundElements);
+  
+  function getUrl(){
+    var content = $('content');
+    var message = $('message');
+    return btoa(content.style.fontSize + ';' +
+                message.style.color + ';' +
+                content.style.background + ';' +
+                message.innerHTML);
+  }
+  colorpicker(components, sizes, cb);
 })();
-
-function getUrl(){
-  var content = $('content');
-  var message = $('message');
-  return btoa(content.style.fontSize + ';' +
-              message.style.color + ';' +
-              content.style.background + ';' +
-              message.innerHTML);
-}
