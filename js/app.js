@@ -4,6 +4,7 @@ var $ = document.getElementById.bind(document);
   var content = $('content');
   var smaller = $('smaller');
   var bigger = $('bigger');
+  var url = $('url');
 
   content.style.fontSize = '400%';
   bigger.addEventListener('click', function(){
@@ -17,6 +18,18 @@ var $ = document.getElementById.bind(document);
     return false;
   });
 
+  url.addEventListener('click', function(){
+    url.href = 'like/#' + getUrl();
+  });
+  function getUrl(){
+    var content = $('content');
+    var message = $('message');
+    return btoa(content.style.fontSize + ';' +
+                message.style.color + ';' +
+                content.style.background + ';' +
+                message.innerHTML);
+  }
+  
 
   var components = {
     background: {
@@ -40,16 +53,6 @@ var $ = document.getElementById.bind(document);
       $('content').style['background'] = 'hsl(' + hsl + ')';
     if (type==='text')
       $('message').style['color'] = 'hsl(' + hsl + ')';
-    $('url').href = 'like/#' + getUrl();
   };
-  
-  function getUrl(){
-    var content = $('content');
-    var message = $('message');
-    return btoa(content.style.fontSize + ';' +
-                message.style.color + ';' +
-                content.style.background + ';' +
-                message.innerHTML);
-  }
-  colorpicker(components, sizes, cb);
+  colorpicker(components, sizes, cb);  
 })();
