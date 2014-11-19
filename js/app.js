@@ -51,8 +51,12 @@ var $ = document.getElementById.bind(document);
   function cb(type, hsl){
     if (type==='background')
       $('content').style['background'] = 'hsl(' + hsl + ')';
-    if (type==='text')
+    if (type==='text'){
       $('message').style['color'] = 'hsl(' + hsl + ')';
+      $('url').style['color'] = 'hsl(' + hsl + ')';
+      $('bigger').style['background'] = 'hsl(' + hsl + ')';
+      $('smaller').style['background'] = 'hsl(' + hsl + ')';
+    }
   };
   colorpicker(components, sizes, cb);  
 })();
