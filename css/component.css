@@ -76,7 +76,7 @@ a, a:hover, a:focus, button {
   top: 20px;
   right: 20px; 
 }
-#bigger::after {
+#bigger .after {
   position: absolute;
   top: 0;
   right: 8px;
@@ -85,7 +85,7 @@ a, a:hover, a:focus, button {
   content: "";
   background: #fff;
 }
-#bigger::before {
+#bigger .before {
   position: absolute;
   top: 8px;
   right: 0px;
@@ -108,7 +108,7 @@ a, a:hover, a:focus, button {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
-#smaller::before {
+#smaller .before {
   position: absolute;
   top: 5px;
   right: 0px;

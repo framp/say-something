@@ -54,8 +54,13 @@ var $ = document.getElementById.bind(document);
     if (type==='text'){
       $('message').style['color'] = 'hsl(' + hsl + ')';
       $('url').style['color'] = 'hsl(' + hsl + ')';
-      $('bigger').style['background'] = 'hsl(' + hsl + ')';
-      $('smaller').style['background'] = 'hsl(' + hsl + ')';
+      for (var button in { bigger: 1, smaller: 1 }){
+        var children = $(button).childNodes;
+        for (var i in children){
+          if (children[i].style)
+            children[i].style['background'] = 'hsl(' + hsl + ')';
+        }
+      }
     }
   };
   colorpicker(components, sizes, cb);  
