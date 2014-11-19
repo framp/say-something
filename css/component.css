@@ -118,11 +118,13 @@ a, a:hover, a:focus, button {
   background: #fff;
 }
 
-#url{
+.url-container{
   position:fixed;
   bottom:0;
   width:100%;
   text-align:center;
+}
+#url{
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
