@@ -29,7 +29,16 @@ a, a:hover, a:focus, button {
 	box-sizing: border-box;
 }
 
-*.unselectable {
+.flipH{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.unselectable {
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -51,12 +60,6 @@ a, a:hover, a:focus, button {
   position: relative;
   -webkit-transition:all 0.2s;
   transition:all 0.2s;
-}
-::selection {
-  background: #4584d7;
-}
-::-moz-selection {
-  background: #4584d7;
 }
 .wrapper h1{
   display: table-cell;
@@ -97,11 +100,11 @@ a, a:hover, a:focus, button {
   top: 24px;
   right: 60px;
 }
-.corner-icon:hover, .corner-color-picker:hover{
+.corner-icon:hover{
   -webkit-transition:all 0.2s;
   transition:all 0.2s;
 }
-.corner-icon:hover, .corner-color-picker:hover{
+.corner-icon:hover{
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
@@ -115,7 +118,7 @@ a, a:hover, a:focus, button {
   background: #fff;
 }
 
-.corner-color-picker{
+.current-color{
   position: fixed;
   display: block;
   width: 150px;
@@ -123,79 +126,71 @@ a, a:hover, a:focus, button {
   background: #fff;
   border-radius:50%;
   bottom: -75px;
+  -webkit-transition:all 0.2s;
+  transition:all 0.2s;
 }
-.corner-color-picker.left{
+.current-color.left{
   left: -75px;
 }
-.corner-color-picker.right{
+.current-color.right{
   right: -75px;
 }
-.corner-color-picker .current-color{
-  display: block;
-  margin:15px;
-  width: 120px;
-  height: 120px;
-  border-radius:50%;
-}
-.color-picker-hue,
-.color-picker-sat,
-.color-picker-lig{
+
+.color-picker,
+.input-color-picker{
   display: block;
   position: fixed;
   bottom: 0;
-  width:130px;
-  height: 130px; 
   overflow: hidden;
 }
-.color-picker-hue{
+.hue{
   width:100px;
   height: 100px;
 }
-.color-picker-sat{
+.sat{
   width:130px;
   height: 130px;
 }
-.color-picker-lig{
+.lig{
   width:160px;
   height: 160px;
 }
+.input-color-picker{
+  width:160px;
+  height:160px;
+}
 
-.color-picker-hue.left, 
-.color-picker-sat.left,
-.color-picker-lig.left{
+.color-picker.left, 
+.input-color-picker.left{
   left:0;
 }
-.color-picker-hue.left,
-.color-picker-hue.left canvas,
-.color-picker-hue.right canvas{
+.hue.left,
+.hue.left canvas,
+.hue.right canvas{
   border-top-right-radius: 100px;
 }
-.color-picker-sat.left,
-.color-picker-sat.left canvas,
-.color-picker-sat.right canvas{
+.sat.left,
+.sat.left canvas,
+.sat.right canvas{
   border-top-right-radius: 130px;
 }
-.color-picker-lig.left,
-.color-picker-lig.left canvas,
-.color-picker-lig.right canvas{
+.lig.left,
+.lig.left canvas,
+.lig.right canvas{
   border-top-right-radius: 160px;
 }
-.color-picker-hue.right{
+.hue.right{
   border-top-left-radius: 100px;
 }
-.color-picker-sat.right{
+.sat.right{
   border-top-left-radius: 130px;
 }
-.color-picker-lig.right{
+.lig.right{
   border-top-left-radius: 160px;
 }
-.color-picker-hue.right, 
-.color-picker-sat.right,
-.color-picker-lig.right{
+.color-picker.right, 
+.input-color-picker.right{
   right:0;
-}
-.color-picker-hue.right{
-  border-top-left-radius: 100px;
 }
 
 #background-current-color{
@@ -203,13 +198,4 @@ a, a:hover, a:focus, button {
 }
 #text-current-color{
   background: #fff;
-}
-
-.flipH{
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
 }

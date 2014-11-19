@@ -17,28 +17,31 @@
       
     <a href="#" class="corner-icon" id="smaller"></a>
     
-    <div class="color-picker-lig left unselectable" unselectable="on">
-      <canvas width="160" height="160" id="background-color-picker-lig" unselectable="on" class="unselectable"></canvas>
+    <div class="color-picker lig left">
+      <canvas width="160" height="160" id="background-color-picker-lig"></canvas>
     </div>
-    <div class="color-picker-sat left unselectable" unselectable="on">
-      <canvas width="130" height="130" id="background-color-picker-sat" unselectable="on" class="unselectable"></canvas>
+    <div class="color-picker sat left">
+      <canvas width="130" height="130" id="background-color-picker-sat"></canvas>
     </div>
-    <div class="color-picker-hue left unselectable" unselectable="on">
-      <canvas width="100" height="100" id="background-color-picker-hue" unselectable="on" class="unselectable">.></canvas>
+    <div class="color-picker hue left">
+      <canvas width="100" height="100" id="background-color-picker-hue">.></canvas>
     </div>
-    <div class="corner-color-picker left unselectable" unselectable="on" id="background-current-color"></div>
+    <div class="current-color left" id="background-current-color"></div>
+    <div class="input-color-picker left unselectable" id="background-color-picker-input" unselectable="on"></div>
     
-    <div class="color-picker-lig right unselectable" unselectable="on">
-      <canvas width="160" height="160" id="text-color-picker-lig" class="flipH unselectable" unselectable="on"></canvas>
+    <div class="color-picker lig right">
+      <canvas width="160" height="160" id="text-color-picker-lig" class="flipH"></canvas>
     </div>
-    <div class="color-picker-sat right unselectable" unselectable="on">
-      <canvas width="130" height="130" id="text-color-picker-sat" class="flipH unselectable" unselectable="on"></canvas>
+    <div class="color-picker sat right">
+      <canvas width="130" height="130" id="text-color-picker-sat" class="flipH"></canvas>
     </div>
-    <div class="color-picker-hue right unselectable" unselectable="on">
-      <canvas width="100" height="100" id="text-color-picker-hue" class="flipH unselectable" unselectable="on"></canvas>
+    <div class="color-picker hue right">
+      <canvas width="100" height="100" id="text-color-picker-hue" class="flipH"></canvas>
     </div>
-    <div class="corner-color-picker right unselectable" unselectable="on" id="text-current-color"></div>
+    <div class="current-color right" id="text-current-color"></div>
+    <div class="input-color-picker right unselectable" id="text-color-picker-input" unselectable="on"></div>
     
+    <script src="js/colorpicker.js"></script>
     <script src="js/app.js"></script>
 	</body>
 </html>
