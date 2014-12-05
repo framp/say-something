@@ -2,35 +2,61 @@ var $ = document.getElementById.bind(document);
 
 (function(){
   var content = $('content');
+  var message = $('message');
   var smaller = $('smaller');
   var bigger = $('bigger');
   var url = $('url');
-
-  content.style.fontSize = '400%';
-  bigger.addEventListener('click', function(){
-    var fontSize = parseInt(content.style.fontSize);
-    content.style.fontSize = (fontSize + 20) + '%';
+  
+  setTextSize('400%');
+  
+  bigger.addEventListener('click', increaseTextSize.bind(null, 20));
+  smaller.addEventListener('click', increaseTextSize.bind(null, -20));
+  url.addEventListener('click', setURL);
+  
+  function setTextMessage(text){
+    message.innerHTML = text;
     return false;
-  });
-  smaller.addEventListener('click', function(){
-    var fontSize = parseInt(content.style.fontSize);
-    content.style.fontSize = (fontSize - 20) + '%';
+  }
+  function setTextSize(size){
+    content.style.fontSize = size;
     return false;
-  });
-
-  url.addEventListener('click', function(){
-    url.href = 'like/#' + getUrl();
-  });
-  function getUrl(){
-    var content = $('content');
-    var message = $('message');
-    return btoa(content.style.fontSize + ';' +
+  }
+  function increaseTextSize(increment){
+    var fontSize = parseInt(content.style.fontSize);
+    content.style.fontSize = (fontSize + increment) + '%';
+    return false;
+  }
+  function setHSLColor(type, color){
+    if (type==='background')
+      return setBackgroundColor('hsl(' + color + ')');
+    if (type==='text')
+      return setTextColor('hsl(' + color + ')');
+    return false;
+  }
+  function setBackgroundColor(color){
+    content.style.background = color;
+    return false;
+  }
+  function setTextColor(color){
+    message.style.color = color;
+    url.style.color = color;
+    for (var button in { bigger: 1, smaller: 1 }){
+      var children = $(button).childNodes;
+      for (var i in children){
+        if (children[i].style)
+          children[i].style.background = color;
+      }
+    }
+    return false;
+  }
+  function setURL(){
+    url.href = 'like/#' + btoa(content.style.fontSize + ';' +
                 message.style.color + ';' +
                 content.style.background + ';' +
                 message.innerHTML);
+    return false;
   }
   
-
   var components = {
     background: {
       hue: 214,
@@ -48,20 +74,13 @@ var $ = document.getElementById.bind(document);
     sat: [100,130],
     lig: [130,160]
   };
-  function cb(type, hsl){
-    if (type==='background')
-      $('content').style['background'] = 'hsl(' + hsl + ')';
-    if (type==='text'){
-      $('message').style['color'] = 'hsl(' + hsl + ')';
-      $('url').style['color'] = 'hsl(' + hsl + ')';
-      for (var button in { bigger: 1, smaller: 1 }){
-        var children = $(button).childNodes;
-        for (var i in children){
-          if (children[i].style)
-            children[i].style['background'] = 'hsl(' + hsl + ')';
-        }
-      }
-    }
-  };
-  colorpicker(components, sizes, cb);  
+  colorpicker(components, sizes, setHSLColor);
+  
+  (function initFromHash(){
+    var data = atob(location.hash.substr(1)).split(';');
+    setTextSize(data.shift());
+    setTextColor(data.shift());
+    setBackgroundColor(data.shift());
+    setTextMessage(data.join(';') || 'SAY SOMETHING');
+  })();
 })();
