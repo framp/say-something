@@ -23,7 +23,7 @@ var $ = document.getElementById.bind(document);
   }
   function increaseTextSize(increment){
     var fontSize = parseInt(content.style.fontSize);
-    content.style.fontSize = (fontSize + increment) + '%';
+    setTextSize((fontSize + increment) + '%');
     return false;
   }
   function setHSLColor(type, color){
@@ -77,10 +77,11 @@ var $ = document.getElementById.bind(document);
   colorpicker(components, sizes, setHSLColor);
   
   (function initFromHash(){
+    if (!location.hash) return;
     var data = atob(location.hash.substr(1)).split(';');
-    setTextSize(data.shift());
-    setTextColor(data.shift());
-    setBackgroundColor(data.shift());
+    setTextSize(data.shift() || '400%');
+    setTextColor(data.shift() || '#FFF');
+    setBackgroundColor(data.shift() || '#4A89DC');
     setTextMessage(data.join(';') || 'SAY SOMETHING');
   })();
 })();
