@@ -50,10 +50,10 @@ var $ = document.getElementById.bind(document);
     return false;
   }
   function setURL(){
-    url.href = 'like/#' + btoa(content.style.fontSize + ';' +
+    url.href = 'like/#' + btoa(unescape(encodeURIComponent(content.style.fontSize + ';' +
                 message.style.color + ';' +
                 content.style.background + ';' +
-                message.innerHTML);
+                message.innerHTML)));
     return false;
   }
   
